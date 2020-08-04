@@ -1,0 +1,37 @@
+﻿@page "/"
+
+<MallFormulär TData="MallFormulär.DTO.DataA" Context="data" FormulärSparat="SparatA">
+    <div class="row">
+        <div class="col">
+            Ange tal A:
+        </div>
+        <div class="col">
+            <InputNumber @bind-Value="data.TalA" />
+            <ValidationMessage For="()=>data.TalA" />
+        </div>
+    </div>
+</MallFormulär>
+<hr />
+<MallFormulär TData="MallFormulär.DTO.DataB" Context="data" FormulärSparat="SparatB">
+    <div class="row">
+        <div class="col">
+            Ange text B:
+        </div>
+        <div class="col">
+            <InputText @bind-Value="data.TextB" />
+            <ValidationMessage For="()=>data.TextB" />
+        </div>
+    </div>
+</MallFormulär>
+@code{
+    private void SparatA(MallFormulär.DTO.DataA sparat)
+    {
+        //Gör något med A
+        Console.WriteLine($"A sparat, TalA={sparat.TalA}");
+    }
+    private void SparatB(MallFormulär.DTO.DataB sparat)
+    {
+        //Gör något med B
+        Console.WriteLine($"B sparat, TextB={sparat.TextB}");
+    }
+}

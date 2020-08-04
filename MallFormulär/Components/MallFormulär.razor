@@ -1,0 +1,28 @@
+﻿@typeparam TData 
+<h3>MallFormulär för inmatning av @typeof(TData).Name</h3>
+<EditForm Model="Data" OnValidSubmit="Sparat">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="row">
+        <div class="col">
+            Ange bastext:
+        </div>
+        <div class="col">
+            <InputText @bind-Value="Data.BasText" />
+            <ValidationMessage For="()=>Data.BasText"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            Ange bastal:
+        </div>
+        <div class="col">
+            <InputNumber @bind-Value="Data.BasTal" />
+            <ValidationMessage For="()=>Data.BasTal" />
+        </div>
+    </div>
+    @ChildContent(Data)
+    <div class="row">
+        <button type="submit">Spara</button>
+    </div>
+</EditForm>
