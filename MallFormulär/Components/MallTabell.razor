@@ -1,0 +1,30 @@
+﻿@typeparam TData
+<h3>MallTabell för presentation av @typeof(TData).Name</h3>
+@if (Data == null)
+{
+    <text>Laddar data...</text>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>BasText</td>
+                <td>BasTal</td>
+                @ExtraRubriker
+                <td>Redigera</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var data in Data)
+            {
+                <tr>
+                    <td>@data.BasText</td>
+                    <td>@data.BasTal</td>
+                    @ExtraKolumner(data)
+                    <td><span class="oi oi-pencil"></span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

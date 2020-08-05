@@ -1,5 +1,5 @@
 ﻿@page "/"
-
+@using MallFormulär.DTO
 <MallFormulär TData="MallFormulär.DTO.DataA" Context="data" FormulärSparat="SparatA">
     <div class="row">
         <div class="col">
@@ -23,15 +23,25 @@
         </div>
     </div>
 </MallFormulär>
+<hr />
+<MallTabell Data="Data" TData="DataA">
+    <ExtraRubriker>
+        <td>TalA</td>
+    </ExtraRubriker>
+    <ExtraKolumner Context="data">
+        <td>@data.TalA</td>
+    </ExtraKolumner>
+</MallTabell>
 @code{
-    private void SparatA(MallFormulär.DTO.DataA sparat)
+    private void SparatA(DataA sparat)
     {
         //Gör något med A
         Console.WriteLine($"A sparat, TalA={sparat.TalA}");
     }
-    private void SparatB(MallFormulär.DTO.DataB sparat)
+    private void SparatB(DataB sparat)
     {
         //Gör något med B
         Console.WriteLine($"B sparat, TextB={sparat.TextB}");
     }
+    private List<DataA> Data = new List<DataA> { new DataA { BasTal = 1, BasText = "A", TalA = 10 }, new DataA { BasTal = 2, BasText = "B", TalA = 20 } };
 }
